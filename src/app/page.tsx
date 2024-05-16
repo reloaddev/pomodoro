@@ -6,6 +6,10 @@ import {useState} from "react";
 
 export default function Home() {
 
+    const pomodoroTime = 1500;
+    const shortBreakTime = 300;
+    const longBreakTime = 900;
+
     const [stepCount, setStepCount] = useState(1);
 
     return (
@@ -16,7 +20,7 @@ export default function Home() {
                     <Step
                         activeStep={stepCount % 8 === 0 ? "longBreak" : (stepCount % 2 === 0 ? "shortBreak" : "pomodoro")}/>
                     <Timer key={stepCount}
-                           startTime={stepCount % 8 === 0 ? 900 : (stepCount % 2 === 0 ? 300 : 5)}
+                           startTime={stepCount % 8 === 0 ? longBreakTime : (stepCount % 2 === 0 ? shortBreakTime : pomodoroTime)}
                            nextStep={() => setStepCount((old => old + 1))}/>
                 </div>
             </div>
