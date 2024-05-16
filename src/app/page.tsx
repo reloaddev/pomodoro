@@ -1,12 +1,12 @@
 "use client";
 
-import React from 'react';
 import Timer from "@/app/timer/timer";
 import {Step} from "@/app/step";
+import {useState} from "react";
 
 export default function Home() {
 
-    const [stepCount, setStepCount] = React.useState(1);
+    const [stepCount, setStepCount] = useState(1);
 
     return (
         <main className="flex flex-col items-center p-20 bg-gray-100 text-gray-800">

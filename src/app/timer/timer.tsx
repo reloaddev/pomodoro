@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import TimerDisplay from "@/app/timer/timer-display";
 import TimerButtons from "@/app/timer/timer-buttons";
 
@@ -9,8 +9,8 @@ interface TimerProps {
 
 export default function Timer({startTime, nextStep}: TimerProps) {
 
-    const [started, setStarted] = React.useState(false);
-    const [time, setTime] = React.useState(startTime);
+    const [started, setStarted] = useState(false);
+    const [time, setTime] = useState(startTime);
     let intervalId = useRef();
 
     const startTimer = () => {
@@ -33,8 +33,6 @@ export default function Timer({startTime, nextStep}: TimerProps) {
 
     useEffect(() => {
         if (time <= 0) {
-            let audio = new Audio("/bell.mp3");
-            void audio.play();
             resetTimer();
         }
     }, [resetTimer, time]);
